@@ -11,7 +11,7 @@ function App() {
   const [filteredMembers, setFilteredMembers] = useState([]);
 
   useEffect(() => {
-    fetch("http://hp-api.herokuapp.com/api/characters/students")
+    fetch("https://hp-api.herokuapp.com/api/characters/students")
       .then((response) => response.json())
       .then((response) => setMembers(response))
       .catch((err) => console.log(err));
