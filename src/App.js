@@ -1,4 +1,7 @@
+import { Switch, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 import "./App.css";
 import Card from "./components/Cards";
 import Home from "./components/home";
@@ -32,23 +35,33 @@ function App() {
       random(ravenclaw),
       random(hufflepuff),
     ]);
+    console.log("funcionou");
   };
 
   return (
     <div className="App">
       <header className="App-header">
-        <Home handleButton={handleButton} />
-        <ul>
-          {filteredMembers.slice(0, 3).map((member, index) => (
-            <Card
-              key={index}
-              name={member.name}
-              house={member.house}
-              alive={member.alive}
-              image={member.image}
-            />
-          ))}
-        </ul>
+        <Switch>
+          <Route exact path="/">
+            <Home handleButton={handleButton} />
+          </Route>
+          <Route exact path="/cards">
+            <ul>
+              {filteredMembers.slice(0, 3).map((member, index) => (
+                <Card
+                  key={index}
+                  name={member.name}
+                  house={member.house}
+                  alive={member.alive}
+                  image={member.image}
+                />
+              ))}
+            </ul>
+            <Link to="/">
+              <button>Voltar</button>
+            </Link>
+          </Route>
+        </Switch>
       </header>
     </div>
   );
