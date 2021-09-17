@@ -58,7 +58,7 @@ function App() {
               ))}
             </ul>
             <Link to="/">
-              <button>Voltar</button>
+              <button onClick={() => setFilteredMembers([])}>Voltar</button>
             </Link>
           </Route>
         </Switch>
